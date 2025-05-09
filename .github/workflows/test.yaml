@@ -1,0 +1,31 @@
+# envで定義された変数が使えるか確認する
+name: "TEST"
+run-name: "commit-ish: ${{ inputs.comit-ish }}, ref_name: ${{ github.ref_name }}, name: ${{ env.NAME }}, ${{ env.name}}"
+on:
+  push:
+    tags:
+      - v*
+  workflow_dispatch:
+    inputs:
+      commit-ish:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+env:
+  name: ${{ inputs.commit-ish || github.ref_name }}
+jobs:
+  test:
+    name: ${{ env.name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+     - run: |
+       echo NAME $NAME
+       echo name $name
+       echo name ${{ env.name }}

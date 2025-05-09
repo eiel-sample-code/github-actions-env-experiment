@@ -14,18 +14,18 @@ on:
 permissions:
   contents: read
 env:
-  name: ${{ inputs.commit-ish || github.ref_name }}
+  name: "${{ inputs.commit-ish || github.ref_name }}"
 jobs:
-  test:
-    name: ${{ env.name }}
-    runs-on: ubuntu-latest
+  ci:
+    name: "${{ env.name }}"
+    runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
 
-     - run: |
-       echo NAME $NAME
-       echo name $name
-       echo name ${{ env.name }}
+      - run: |
+         echo NAME $NAME
+         echo name $name
+         echo name ${{ env.name }}

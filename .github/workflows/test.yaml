@@ -1,6 +1,6 @@
 # envで定義された変数が使えるか確認する
 name: "TEST"
-run-name: "commit-ish: ${{ inputs.comit-ish }}, ref_name: ${{ github.ref_name }}, name: ${{ env.NAME }}, ${{ env.name}}"
+run-name: "commit-ish: ${{ inputs.comit-ish }}, ref_name: ${{ github.ref_name }}"
 on:
   push:
     tags:

@@ -17,7 +17,7 @@ env:
   name: "${{ inputs.commit-ish || github.ref_name }}"
 jobs:
   ci:
-    name: "${{ env.name }}"
+    name: "commit-ish ${{ inputs.commit-ish }}, ref_name ${{ github.ref_name }}"
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout
